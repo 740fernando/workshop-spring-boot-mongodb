@@ -4,8 +4,6 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +45,12 @@ public class UserResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri(); // Boa prática - Retorna uma resposta vazia com header do novo recurso criado;
 		return ResponseEntity.created(uri).build(); //created(uri) -> retorna com código 201
 	}
-
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> delete (@PathVariable String id){
+		userService.delete(id);
+		return ResponseEntity.noContent().build();	
+	}
+	
 }
 // ResponseEntity - Objeto sofisticado do spring. Contem atributos específicos do HTTP. ex: Header, body e error.
