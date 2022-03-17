@@ -34,6 +34,25 @@ public class UserService {
 		findById(id);
 		userRepository.deleteById(id);
 	}
+	
+	public User update(User obj) {
+		User newUser = userRepository.findById(obj.getId()).get();
+		updataData(newUser,obj);
+		return userRepository.save(obj);
+	}
+	/**
+	 * Responsável por copiar os dados do obj para o new Obj
+	 * 
+	 * obs: o ID não é alterado
+	 * 
+	 * @param newUser
+	 * @param obj
+	 */
+	private void updataData(User newUser, User obj) {
+		newUser.setName(obj.getName());
+		newUser.setEmail(obj.getEmail());
+	}
+
 	/**
 	 * Responsável por converter UserDTO em USER
 	 * @param userDTO
