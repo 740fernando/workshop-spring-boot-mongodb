@@ -1,24 +1,29 @@
 package com.fernandoluiz.workshopmongo.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 
 @Document(collection = "user") // Essa anotação significa que a classe é uma coleção do mongoDB
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Id 
+
+	@Id
 	private String id;
 	private String name;
 	private String email;
-//	private List<Post> post;
-	
+
+					  // @DBRef - >Responsavel por especificar que um atributo está referenciando outra colecao do MongoDB
+	@DBRef(lazy=true) //lazy=true -> Não carrega automaticamente a lista de post, quando recupera do banco de dados
+	private List<Post> posts = new ArrayList<>();;
+
 	public User() {
-		
+
 	}
 
 	public User(String id, String name, String email) {
@@ -56,6 +61,14 @@ public class User implements Serializable {
 		return Objects.hash(id);
 	}
 
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,5 +80,5 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }
