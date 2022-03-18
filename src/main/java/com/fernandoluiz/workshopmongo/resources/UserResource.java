@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.fernandoluiz.workshopmongo.domain.Post;
 import com.fernandoluiz.workshopmongo.domain.User;
 import com.fernandoluiz.workshopmongo.dto.UserDTO;
 import com.fernandoluiz.workshopmongo.service.UserService;
@@ -60,5 +61,10 @@ public class UserResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@GetMapping(value="/{id}/posts")
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+		User user = userService.findById(id);
+		return ResponseEntity.ok().body(user.getPosts());
+	}
 }
 // ResponseEntity - Objeto sofisticado do spring. Contem atributos específicos do HTTP. ex: Header, body e error.
