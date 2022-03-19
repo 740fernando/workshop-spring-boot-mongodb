@@ -1,4 +1,4 @@
-# 📚 Nivelamento sobre NoSQL eMongoDB
+# 📚 Nivelamento sobre NoSQL e MongoDB
 
 ## 🔸 Problema 1: incompatibilidade de impedância
 
