@@ -68,6 +68,30 @@ como uma unidade
 MESMO NODO do cluster
 ##### Nota: não suportam todo suporte ACID como bancos relacionais, mas garantem atomicidade no agregado.
 
+# 📚 Projeto MongoDB com Spring Boot
+
+## 🛑 Objetivo geral:
+- Compreender as principais diferenças entre paradigma orientado a documentos e relacional
+- Implementar operações de CRUD
+- Refletir sobre decisões de design para um banco de dados orientado a documentos
+- Implementar associações entre objetos
+  - Objetos aninhados
+  - Referências
+- Realizar consultas com Spring Data e MongoRepository
+
+## 🔸 Instalação do MongoDB
+### Checklist Windows:
+- https://www.mongodb.com -> Download -> Community Server
+- Baixar e realizar a instalação com opção "Complete"
+- https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/ -> Set up the MongoDB environment
+   - Criar pasta \data\db
+   - Acrescentar em PATH: C:\Program Files\MongoDB\Server\3.6\bin (adapte para sua versão)
+- Testar no terminal: mongod
+
+## 🔸 Diagrama de classe
+
+![image](https://user-images.githubusercontent.com/32016610/159126516-26b92c8e-f9ec-4673-bee2-0e6fbb988f7a.png)
+
 
 <h2> 🤝 Contribuindo </h2>
 
